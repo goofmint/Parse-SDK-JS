@@ -39,4 +39,5 @@ function mockXHR(results, options = {}) {
   return XHR;
 }
 
-module.exports = mockXHR;
+// module.exports = mockXHR;
+export default mockXHR;

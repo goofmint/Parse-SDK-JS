@@ -22,4 +22,5 @@ const mockAsyncStorage = {
   },
 };
 
-module.exports = mockAsyncStorage;
+// module.exports = mockAsyncStorage;
+export default mockAsyncStorage;

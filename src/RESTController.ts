@@ -4,6 +4,7 @@ import CoreManager from './CoreManager';
 import ParseError from './ParseError';
 import { resolvingPromise } from './promiseUtils';
 import XhrWeapp from './Xhr.weapp';
+// import { XMLHttpRequest } from 'xmlhttprequest';
 
 export type RequestOptions = {
   useMasterKey?: boolean;
@@ -41,15 +42,17 @@ type PayloadType = {
 };
 
 let XHR: any = null;
-if (typeof XMLHttpRequest !== 'undefined') {
-  XHR = XMLHttpRequest;
-}
-if (process.env.PARSE_BUILD === 'node') {
-  XHR = require('xmlhttprequest').XMLHttpRequest;
-}
+//if (typeof XMLHttpRequest !== 'undefined') {
+// XHR = XMLHttpRequest;
+// }
+// if (process.env.PARSE_BUILD === 'node') {
+XHR = XhrWeapp;
+// }
+/*
 if (process.env.PARSE_BUILD === 'weapp') {
   XHR = XhrWeapp;
 }
+*/
 
 let useXDomainRequest = false;
 // @ts-ignore
@@ -355,5 +358,5 @@ const RESTController = {
   },
 };
 
-module.exports = RESTController;
+// module.exports = RESTController;
 export default RESTController;

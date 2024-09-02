@@ -80,5 +80,5 @@ const StorageController = {
   },
 };
 
-module.exports = StorageController;
+// module.exports = StorageController;
 export default StorageController;

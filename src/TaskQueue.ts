@@ -51,5 +51,5 @@ class TaskQueue {
   }
 }
 
-module.exports = TaskQueue;
+// module.exports = TaskQueue;
 export default TaskQueue;

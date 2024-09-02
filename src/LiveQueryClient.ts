@@ -1,4 +1,4 @@
-import CoreManager, { WebSocketController } from './CoreManager';
+import CoreManager from './CoreManager';
 import ParseObject from './ParseObject';
 import LiveQuerySubscription from './LiveQuerySubscription';
 import { resolvingPromise } from './promiseUtils';
@@ -115,7 +115,7 @@ class LiveQueryClient {
   additionalProperties: boolean;
   connectPromise: any;
   subscriptions: Map<number, LiveQuerySubscription>;
-  socket: WebSocketController & { closingPromise?: any };
+  // socket: WebSocketController & { closingPromise?: any };
   state: string;
   reconnectHandle: any;
   emitter: any;
@@ -191,6 +191,11 @@ class LiveQueryClient {
     if (!query) {
       return;
     }
+    if (!sessionToken) {
+      return;
+    }
+    return undefined;
+    /*
     const className = query.className;
     const queryJSON = query.toJSON();
     const where = queryJSON.where;
@@ -224,6 +229,7 @@ class LiveQueryClient {
       });
 
     return subscription;
+    */
   }
 
   /**
@@ -236,6 +242,8 @@ class LiveQueryClient {
     if (!subscription) {
       return;
     }
+    return;
+    /*
     const unsubscribeRequest = {
       op: OP_TYPES.UNSUBSCRIBE,
       requestId: subscription.id,
@@ -247,6 +255,7 @@ class LiveQueryClient {
       .then(() => {
         return subscription.unsubscribePromise;
       });
+    */
   }
 
   /**
@@ -260,7 +269,8 @@ class LiveQueryClient {
       this.emit(CLIENT_EMMITER_TYPES.ERROR, 'Can not find WebSocket implementation');
       return;
     }
-
+    return;
+    /*
     if (this.state !== CLIENT_STATE.RECONNECTING) {
       this.state = CLIENT_STATE.CONNECTING;
     }
@@ -285,9 +295,11 @@ class LiveQueryClient {
     this.socket.onerror = error => {
       this._handleWebSocketError(error);
     };
+    */
   }
 
   resubscribe() {
+    /*
     this.subscriptions.forEach((subscription, requestId) => {
       const query = subscription.query;
       const queryJSON = query.toJSON();
@@ -316,6 +328,7 @@ class LiveQueryClient {
         this.socket.send(JSON.stringify(subscribeRequest));
       });
     });
+    */
   }
 
   /**
@@ -325,6 +338,7 @@ class LiveQueryClient {
    * @returns {Promise | undefined} CloseEvent {@link https://developer.mozilla.org/en-US/docs/Web/API/WebSocket/close_event}
    */
   async close(): Promise<void> {
+    /*
     if (this.state === CLIENT_STATE.INITIALIZED || this.state === CLIENT_STATE.DISCONNECTED) {
       return;
     }
@@ -338,6 +352,7 @@ class LiveQueryClient {
     this._handleReset();
     this.emit(CLIENT_EMMITER_TYPES.CLOSE);
     return this.socket?.closingPromise;
+    */
   }
 
   // ensure we start with valid state if connect is called again after close
@@ -350,6 +365,7 @@ class LiveQueryClient {
   }
 
   _handleWebSocketOpen() {
+    /*
     const connectRequest = {
       op: OP_TYPES.CONNECT,
       applicationId: this.applicationId,
@@ -362,6 +378,7 @@ class LiveQueryClient {
       connectRequest.installationId = this.installationId;
     }
     this.socket.send(JSON.stringify(connectRequest));
+    */
   }
 
   _handleWebSocketMessage(event: any) {

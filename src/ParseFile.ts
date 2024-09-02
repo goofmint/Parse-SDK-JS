@@ -2,14 +2,10 @@
 import CoreManager from './CoreManager';
 import type { FullOptions } from './RESTController';
 import ParseError from './ParseError';
-import XhrWeapp from './Xhr.weapp';
 
 let XHR: any = null;
 if (typeof XMLHttpRequest !== 'undefined') {
   XHR = XMLHttpRequest;
-}
-if (process.env.PARSE_BUILD === 'weapp') {
-  XHR = XhrWeapp;
 }
 
 type Base64 = { base64: string };
@@ -569,4 +565,4 @@ const DefaultController = {
 CoreManager.setFileController(DefaultController);
 
 export default ParseFile;
-exports.b64Digit = b64Digit;
+export {b64Digit}

@@ -76,4 +76,5 @@ const mockWeChat = {
   },
 };
 
-module.exports = mockWeChat;
+// module.exports = mockWeChat;
+export default mockWeChat;

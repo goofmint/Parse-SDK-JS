@@ -23,4 +23,5 @@ const mockStorageInterface = {
   },
 };
 
-module.exports = mockStorageInterface;
+// module.exports = mockStorageInterface;
+export default mockStorageInterface;

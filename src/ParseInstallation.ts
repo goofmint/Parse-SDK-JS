@@ -285,5 +285,5 @@ class ParseInstallation extends ParseObject {
 
 ParseObject.registerSubclass('_Installation', ParseInstallation);
 
-module.exports = ParseInstallation;
+// module.exports = ParseInstallation;
 export default ParseInstallation;

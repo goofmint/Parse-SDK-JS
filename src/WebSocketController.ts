@@ -18,5 +18,5 @@ try {
 } catch (_) {
   // WebSocket unavailable
 }
-module.exports = WebSocketController;
+// module.exports = WebSocketController;
 export default WebSocketController;

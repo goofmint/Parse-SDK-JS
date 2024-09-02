@@ -75,7 +75,20 @@ class XhrWeapp {
   }
 
   send(data) {
-    // @ts-ignore
+    return fetch(this.url, {
+      method: this.method,
+      body: data,
+      headers: this.header,
+    }).then(res => {
+      this.status = res.status;
+      this.responseHeader = res.headers;
+      return res.text();
+    }).then(res => {
+      this.responseText = res;
+      // this.responseText = JSON.stringify(res);
+      this.onreadystatechange();
+    });
+    /*
     this.requestTask = wx.request({
       url: this.url,
       method: this.method,
@@ -105,7 +118,8 @@ class XhrWeapp {
       // @ts-ignore
       this.onprogress(event);
     });
+    */
   }
 }
-module.exports = XhrWeapp;
+// module.exports = XhrWeapp;
 export default XhrWeapp;

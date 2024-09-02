@@ -61,5 +61,5 @@ const LocalDatastoreController = {
   },
 };
 
-module.exports = LocalDatastoreController;
+// module.exports = LocalDatastoreController;
 export default LocalDatastoreController;

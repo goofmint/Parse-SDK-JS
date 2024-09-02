@@ -33,4 +33,5 @@ const mockRNStorage = {
   },
 };
 
-module.exports = mockRNStorage;
+// module.exports = mockRNStorage;
+export default mockRNStorage;

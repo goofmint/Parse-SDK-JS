@@ -1,10 +1,10 @@
-import RNStorageController from './StorageController.react-native';
+// import RNStorageController from './StorageController.react-native';
 import BrowserStorageController from './StorageController.browser';
-import WeappStorageController from './StorageController.weapp';
+// import WeappStorageController from './StorageController.weapp';
 import DefaultStorageController from './StorageController.default';
 
 let StorageController: any = DefaultStorageController;
-
+/*
 if (process.env.PARSE_BUILD === 'react-native') {
   StorageController = RNStorageController;
 } else if (process.env.PARSE_BUILD === 'browser') {
@@ -12,5 +12,7 @@ if (process.env.PARSE_BUILD === 'react-native') {
 } else if (process.env.PARSE_BUILD === 'weapp') {
   StorageController = WeappStorageController;
 }
-module.exports = StorageController;
+*/
+StorageController = BrowserStorageController;
+// module.exports = StorageController;
 export default StorageController;

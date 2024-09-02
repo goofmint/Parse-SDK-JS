@@ -6,4 +6,5 @@ function flushPromises() {
   return new Promise(resolve => setImmediate(resolve));
 }
 
-module.exports = flushPromises;
+// module.exports = flushPromises;
+export default flushPromises;

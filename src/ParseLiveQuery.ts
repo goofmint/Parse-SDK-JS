@@ -38,8 +38,8 @@ class LiveQuery {
   emit: any;
 
   constructor() {
-    const EventEmitter = CoreManager.getEventEmitter();
-    this.emitter = new EventEmitter();
+    // const EventEmitter = CoreManager.getEventEmitter();
+    // this.emitter = new EventEmitter();
     this.on = (eventName: string, listener: any) => this.emitter.on(eventName, listener);
     this.emit = (eventName: string, ...args: any) => this.emitter.emit(eventName, ...args);
     // adding listener so process does not crash

@@ -35,7 +35,7 @@ import ParseLiveQuery from './ParseLiveQuery';
 import LiveQueryClient from './LiveQueryClient';
 import LocalDatastoreController from './LocalDatastoreController';
 import StorageController from './StorageController';
-import WebSocketController from './WebSocketController';
+// import WebSocketController from './WebSocketController';
 
 /**
  * Contains all Parse API classes and functions.
@@ -176,6 +176,7 @@ const Parse: ParseType = {
    * @static
    */
   initialize(applicationId: string, javaScriptKey: string) {
+    /*
     if (
       process.env.PARSE_BUILD === 'browser' &&
       CoreManager.get('IS_NODE') &&
@@ -186,6 +187,7 @@ const Parse: ParseType = {
           "node.js environment. You should require('parse/node') instead."
       );
     }
+    */
     Parse._initialize(applicationId, javaScriptKey);
   },
 
@@ -195,20 +197,20 @@ const Parse: ParseType = {
     CoreManager.set('MASTER_KEY', masterKey);
     CoreManager.set('USE_MASTER_KEY', false);
     CoreManager.setIfNeeded('EventEmitter', EventEmitter);
-    CoreManager.setIfNeeded('LiveQuery', new ParseLiveQuery());
+    // CoreManager.setIfNeeded('LiveQuery', new ParseLiveQuery());
     CoreManager.setIfNeeded('CryptoController', CryptoController);
     CoreManager.setIfNeeded('EventuallyQueue', EventuallyQueue);
     CoreManager.setIfNeeded('InstallationController', InstallationController);
     CoreManager.setIfNeeded('LocalDatastoreController', LocalDatastoreController);
     CoreManager.setIfNeeded('StorageController', StorageController);
-    CoreManager.setIfNeeded('WebSocketController', WebSocketController);
+    // CoreManager.setIfNeeded('WebSocketController', WebSocketController);
 
-    if (process.env.PARSE_BUILD === 'browser') {
-      Parse.IndexedDB = CoreManager.setIfNeeded(
-        'IndexedDBStorageController',
-        IndexedDBStorageController
-      );
-    }
+    // if (process.env.PARSE_BUILD === 'browser') {
+    Parse.IndexedDB = CoreManager.setIfNeeded(
+      'IndexedDBStorageController',
+      IndexedDBStorageController
+    );
+    // }
   },
 
   /**
@@ -467,6 +469,7 @@ const Parse: ParseType = {
 
 CoreManager.setRESTController(RESTController);
 
+/*
 if (process.env.PARSE_BUILD === 'node') {
   Parse.initialize = Parse._initialize;
   Parse.Cloud = Parse.Cloud || ({} as any);
@@ -475,9 +478,10 @@ if (process.env.PARSE_BUILD === 'node') {
   };
   Parse.Hooks = Hooks;
 }
+*/
 
 // For legacy requires, of the form `var Parse = require('parse').Parse`
 Parse.Parse = Parse;
 
-module.exports = Parse;
+// module.exports = Parse;
 export default Parse;

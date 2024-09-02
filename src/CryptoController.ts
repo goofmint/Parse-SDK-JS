@@ -1,26 +1,20 @@
-let AES: any;
-let ENC: any;
-
-if (process.env.PARSE_BUILD === 'react-native') {
-  const CryptoJS = require('react-native-crypto-js');
-  AES = CryptoJS.AES;
-  ENC = CryptoJS.enc.Utf8;
-} else {
-  AES = require('crypto-js/aes');
-  ENC = require('crypto-js/enc-utf8');
-}
-
+// import AES from 'crypto-js/aes';
+// import ENC from 'crypto-js/enc-utf8';
+import crypto from 'crypto';
 const CryptoController = {
   encrypt(obj: any, secretKey: string): string {
-    const encrypted = AES.encrypt(JSON.stringify(obj), secretKey);
-    return encrypted.toString();
+    // encode the object as a string
+    const cipher = crypto.createCipher('aes-256-cbc', secretKey);
+    const crypted = cipher.update(JSON.stringify(obj), 'utf-8', 'hex');
+    return crypted + cipher.final('hex');
   },
 
   decrypt(encryptedText: string, secretKey: string): string {
-    const decryptedStr = AES.decrypt(encryptedText, secretKey).toString(ENC);
-    return decryptedStr;
+    const decipher = crypto.createDecipher('aes-256-cbc', secretKey);
+    const decrypted = decipher.update(encryptedText, 'hex', 'utf-8');
+    return decrypted + decipher.final('utf-8')
   },
 };
 
-module.exports = CryptoController;
+// module.exports = CryptoController;
 export default CryptoController;
