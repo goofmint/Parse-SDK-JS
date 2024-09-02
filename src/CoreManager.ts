@@ -15,7 +15,7 @@ import type ParseConfig from './ParseConfig';
 import type LiveQueryClient from './LiveQueryClient';
 import type ParseSchema from './ParseSchema';
 import type ParseInstallation from './ParseInstallation';
-import Config from '../package.json';
+// import Config from '../package.json';
 
 type AnalyticsController = {
   track: (name: string, dimensions: { [key: string]: string }) => Promise<any>;
@@ -318,7 +318,7 @@ const config: Config & { [key: string]: any } = {
   SERVER_AUTH_TOKEN: null,
   LIVEQUERY_SERVER_URL: null,
   ENCRYPTED_KEY: null,
-  VERSION: 'js' + Config.version,
+  VERSION: 'js5.3.0-beta.1',
   APPLICATION_ID: null,
   JAVASCRIPT_KEY: null,
   MASTER_KEY: null,
