@@ -23,7 +23,8 @@
     "lib/",
     "LICENSE",
     "NOTICE",
-    "README.md"
+    "README.md",
+    "src"
   ],
   "browser": {
     "react-native": false
