@@ -4,10 +4,12 @@ const StorageController = {
   async: 0,
 
   getItem(path: string): string | null {
+    if (typeof localStorage === 'undefined') return null;
     return localStorage.getItem(path);
   },
 
   setItem(path: string, value: string) {
+    if (typeof localStorage === 'undefined') return;
     try {
       localStorage.setItem(path, value);
     } catch (e) {
@@ -17,10 +19,12 @@ const StorageController = {
   },
 
   removeItem(path: string) {
+    if (typeof localStorage === 'undefined') return;
     localStorage.removeItem(path);
   },
 
   getAllKeys() {
+    if (typeof localStorage === 'undefined') return [];
     const keys: string[] = [];
     for (let i = 0; i < localStorage.length; i += 1) {
       keys.push(localStorage.key(i) as string);
@@ -29,6 +33,7 @@ const StorageController = {
   },
 
   clear() {
+    if (typeof localStorage === 'undefined') return;
     localStorage.clear();
   },
 };
